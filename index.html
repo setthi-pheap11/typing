@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SetthiTyping - Master Khmer & English Typing</title>
+  <meta name="description" content="Professional typing practice platform for Khmer and English languages. Improve your typing speed and accuracy with SetthiTyping.">
+  <meta name="keywords" content="typing, khmer typing, english typing, typing test, typing speed, typing practice">
+  
+  <!-- Custom SVG Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23000'/><rect x='10' y='30' width='12' height='8' rx='2' fill='%23fff'/><rect x='26' y='30' width='12' height='8' rx='2' fill='%23fff'/><rect x='42' y='30' width='12' height='8' rx='2' fill='%23fff'/><rect x='58' y='30' width='12' height='8' rx='2' fill='%23fff'/><rect x='74' y='30' width='12' height='8' rx='2' fill='%23fff'/><rect x='10' y='42' width='12' height='8' rx='2' fill='%23fff'/><rect x='26' y='42' width='12' height='8' rx='2' fill='%23fff'/><rect x='42' y='42' width='12' height='8' rx='2' fill='%23fff'/><rect x='58' y='42' width='12' height='8' rx='2' fill='%23fff'/><rect x='74' y='42' width='12' height='8' rx='2' fill='%23fff'/><rect x='18' y='54' width='60' height='8' rx='4' fill='%23fff'/></svg>">
+  
+  <style>
+    :root {
+      --primary: #000000;
+      --primary-dark: #333333;
+      --primary-light: #666666;
+      --secondary: #ffffff;
+      --success: #22c55e;
+      --success-light: #86efac;
+      --success-dark: #16a34a;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --dark: #000000;
+      --gray: #666666;
+      --light-gray: #f5f5f5;
+      --white: #ffffff;
+      --gradient: linear-gradient(135deg, #000000 0%, #333333 100%);
+      --shadow: 0 10px 25px rgba(0,0,0,0.1);
+      --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
+      --border: #e0e0e0;
+      --key-correct: #22c55e;
+      --key-wrong: #ef4444;
+      --key-active: #333333;
+      --key-combo: #16a34a;
+      --key-guide: #fbbf24;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Khmer OS', 'Arial', system-ui, -apple-system, sans-serif;
+      background: var(--white);
+      min-height: 100vh;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    .header {
+      background: var(--white);
+      border-bottom: 2px solid var(--primary);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .logo-icon::before {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 20px;
+      background: var(--white);
+      border-radius: 4px;
+    }
+
+    .logo-icon::after {
+      content: '';
+      position: absolute;
+      width: 26px;
+      height: 16px;
+      background: var(--primary);
+      border-radius: 2px;
+      background-image: 
+        linear-gradient(var(--white) 2px, transparent 2px),
+        linear-gradient(90deg, var(--white) 2px, transparent 2px);
+      background-size: 4px 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    .main-container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .hero-section {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding: 3rem 0;
+      background: var(--primary);
+      color: var(--white);
+      margin: 0 -1rem 2rem -1rem;
+      position: relative;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 2px,
+          rgba(255,255,255,0.05) 2px,
+          rgba(255,255,255,0.05) 4px
+        );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+
+    .typing-card {
+      background: var(--white);
+      border: 2px solid var(--primary);
+      border-radius: 0;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 2rem;
+    }
+
+    .mode-selector {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 2rem;
+      border: 2px solid var(--primary);
+    }
+
+    .mode-btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      background: var(--white);
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .mode-btn.active {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .mode-btn:not(:last-child) {
+      border-right: 1px solid var(--primary);
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .control-btn {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: 2px solid var(--primary);
+      background: var(--white);
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .control-btn:hover {
+      background: var(--light-gray);
+    }
+
+    .control-btn.active {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .time-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--white);
+      border: 2px solid var(--primary);
+    }
+
+    .time-selector select {
+      border: none;
+      background: transparent;
+      font-weight: 600;
+      color: var(--dark);
+      cursor: pointer;
+    }
+
+    .timer-display {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-family: 'Courier New', monospace;
+      border: 3px solid var(--primary);
+      padding: 1rem;
+      background: var(--white);
+    }
+
+    .timer-display.warning { 
+      background: var(--light-gray);
+      animation: flash 1s infinite;
+    }
+    .timer-display.danger { 
+      background: var(--danger);
+      color: var(--white);
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes flash {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    .difficulty-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      border: 2px solid var(--primary);
+    }
+
+    .target-text {
+      font-size: 1.4rem;
+      line-height: 1.8;
+      padding: 1.5rem;
+      background: var(--white);
+      border: 3px solid var(--primary);
+      margin-bottom: 1.5rem;
+      min-height: 120px;
+      font-family: 'Courier New', 'Khmer OS', monospace;
+    }
+
+    .input-area {
+      width: 100%;
+      min-height: 120px;
+      font-size: 1.4rem;
+      line-height: 1.8;
+      padding: 1.5rem;
+      border: 3px solid var(--primary);
+      background: var(--white);
+      font-family: 'Courier New', 'Khmer OS', monospace;
+      resize: vertical;
+      transition: all 0.3s ease;
+    }
+
+    .input-area:focus {
+      outline: none;
+      background: var(--light-gray);
+    }
+
+    .input-area:disabled {
+      background: var(--light-gray);
+      border-color: var(--gray);
+      cursor: not-allowed;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0;
+      margin: 2rem 0;
+      border: 2px solid var(--primary);
+    }
+
+    .stat-card {
+      background: var(--white);
+      color: var(--primary);
+      padding: 1.5rem;
+      text-align: center;
+      border-right: 1px solid var(--primary);
+      border-bottom: 1px solid var(--primary);
+      transition: background-color 0.3s ease;
+    }
+
+    .stat-card:hover {
+      background: var(--light-gray);
+    }
+
+    .stat-card:last-child,
+    .stat-card:nth-child(4) {
+      border-right: none;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      font-family: 'Courier New', monospace;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .feedback {
+      margin: 1.5rem 0;
+      font-size: 1.1rem;
+      text-align: center;
+      min-height: 30px;
+      font-weight: 600;
+      padding: 1rem;
+      border: 2px solid var(--border);
+      background: var(--white);
+    }
+
+    .results-card {
+      background: var(--success);
+      color: var(--white);
+      padding: 2rem;
+      border: 2px solid var(--success);
+      text-align: center;
+      margin-top: 2rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .results-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .results-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .result-stat {
+      background: var(--white);
+      color: var(--success);
+      padding: 1rem;
+      border: 2px solid var(--white);
+      font-weight: 600;
+    }
+
+    .primary-btn {
+      background: var(--primary);
+      color: var(--white);
+      padding: 1rem 2rem;
+      border: 2px solid var(--primary);
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .primary-btn:hover {
+      background: var(--white);
+      color: var(--primary);
+    }
+
+    .secondary-btn {
+      background: var(--white);
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .secondary-btn:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    /* Character highlighting */
+    .correct-char { 
+      background: var(--success); 
+      color: var(--white);
+    }
+    .wrong-char { 
+      background: var(--danger);
+      color: var(--white);
+      text-decoration: line-through;
+    }
+    .current-char { 
+      background: var(--primary); 
+      color: var(--white);
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0.5; }
+    }
+
+    /* Virtual Keyboard Styles */
+    .keyboard-container {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: var(--white);
+      border: 2px solid var(--primary);
+    }
+
+    .keyboard-title {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .keyboard-guide {
+      background: var(--success-light);
+      border: 2px solid var(--success);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .guide-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--success-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .guide-combinations {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .guide-combo {
+      background: var(--success);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .keyboard-status {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    .key-combo-display {
+      background: var(--light-gray);
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--success);
+      font-family: 'Courier New', monospace;
+      font-weight: 600;
+      min-height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--success-dark);
+    }
+
+    .keyboard {
+      max-width: 800px;
+      margin: 0 auto;
+      font-family: 'Courier New', monospace;
+    }
+
+    .keyboard-row {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 6px;
+    }
+
+    .key {
+      background: var(--white);
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 8px;
+      min-width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+      text-align: center;
+      line-height: 1;
+      position: relative;
+    }
+
+    .key:hover {
+      background: var(--light-gray);
+    }
+
+    /* Key states */
+    .key.pressed {
+      background: var(--key-active);
+      color: var(--white);
+      transform: scale(0.95);
+    }
+
+    .key.correct {
+      background: var(--key-correct);
+      color: var(--white);
+      animation: correctFlash 0.5s ease;
+    }
+
+    .key.wrong {
+      background: var(--key-wrong);
+      color: var(--white);
+      animation: wrongFlash 0.5s ease;
+    }
+
+    .key.next-key {
+      background: var(--success);
+      color: var(--white);
+      animation: nextKeyPulse 1s infinite;
+      border-color: var(--success-dark);
+    }
+
+    .key.modifier-active {
+      background: var(--key-guide);
+      color: var(--white);
+      border-color: var(--key-guide);
+    }
+
+    .key.combo-active {
+      background: var(--success);
+      color: var(--white);
+      box-shadow: 0 0 15px rgba(34, 197, 94, 0.6);
+      animation: comboGlow 0.3s ease;
+    }
+
+    .key.guide-highlight {
+      background: var(--key-guide);
+      color: var(--white);
+      animation: guideFlash 2s infinite;
+      border-color: var(--key-guide);
+    }
+
+    @keyframes correctFlash {
+      0%, 100% { background: var(--key-correct); }
+      50% { background: var(--success-light); }
+    }
+
+    @keyframes wrongFlash {
+      0%, 100% { background: var(--key-wrong); }
+      50% { background: #fca5a5; }
+    }
+
+    @keyframes nextKeyPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    @keyframes comboGlow {
+      0% { box-shadow: 0 0 5px rgba(34, 197, 94, 0.3); }
+      50% { box-shadow: 0 0 25px rgba(34, 197, 94, 0.8); }
+      100% { box-shadow: 0 0 15px rgba(34, 197, 94, 0.6); }
+    }
+
+    @keyframes guideFlash {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    /* Special key sizes */
+    .key.tab { min-width: 60px; }
+    .key.caps-lock { min-width: 80px; }
+    .key.shift { min-width: 100px; }
+    .key.ctrl { min-width: 60px; }
+    .key.alt { min-width: 60px; }
+    .key.space { min-width: 240px; }
+    .key.enter { min-width: 100px; }
+    .key.backspace { min-width: 80px; }
+
+    /* Caps lock indicator */
+    .caps-indicator {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 8px;
+      height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .key.caps-active .caps-indicator {
+      opacity: 1;
+    }
+
+    .key.caps-active {
+      background: var(--success);
+      color: var(--white);
+    }
+
+    /* Key combination guide indicator */
+    .key-guide-indicator {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      font-size: 0.6rem;
+      background: var(--success);
+      color: var(--white);
+      padding: 1px 3px;
+      border-radius: 2px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .key.guide-highlight .key-guide-indicator {
+      opacity: 1;
+    }
+
+    /* Key labels */
+    .key-main {
+      font-size: 1rem;
+    }
+
+    .key-shift {
+      font-size: 0.7rem;
+      position: absolute;
+      top: 2px;
+      right: 2px;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--primary);
+      color: var(--white);
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+      border-top: 4px solid var(--primary);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s ease;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+    }
+
+    .footer-links a:hover {
+      opacity: 0.8;
+      border-bottom-color: var(--white);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 1.5rem;
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+
+    /* Custom Icons */
+    .icon-practice::before {
+      content: "📝";
+      margin-right: 0.5rem;
+    }
+
+    .icon-test::before {
+      content: "⏱️";
+      margin-right: 0.5rem;
+    }
+
+    .icon-en::before {
+      content: "EN";
+      background: var(--primary);
+      color: var(--white);
+      padding: 2px 6px;
+      font-size: 0.8rem;
+      border-radius: 2px;
+      margin-right: 0.5rem;
+      font-weight: 800;
+    }
+
+    .icon-km::before {
+      content: "ខ្មែរ";
+      background: var(--primary);
+      color: var(--white);
+      padding: 2px 6px;
+      font-size: 0.8rem;
+      border-radius: 2px;
+      margin-right: 0.5rem;
+      font-weight: 800;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-content {
+        padding: 0 1rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .typing-card {
+        padding: 1.5rem;
+        margin: 1rem;
+      }
+
+      .controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .target-text,
+      .input-area {
+        font-size: 1.2rem;
+      }
+
+      .mode-selector {
+        flex-direction: column;
+      }
+
+      .mode-btn:not(:last-child) {
+        border-right: none;
+        border-bottom: 1px solid var(--primary);
+      }
+
+      .keyboard {
+        transform: scale(0.8);
+        transform-origin: center;
+      }
+
+      .key {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+      }
+
+      .keyboard-status {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .guide-combinations {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* Loading animation */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid var(--white);
+      border-radius: 50%;
+      border-top-color: transparent;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Success/Error states */
+    .error { 
+      color: var(--danger); 
+      background: #fef2f2;
+      padding: 0.5rem;
+      border: 1px solid var(--danger);
+    }
+    .success { 
+      color: var(--white); 
+      background: var(--success);
+      padding: 0.5rem;
+    }
+    .warning { 
+      color: var(--warning);
+      background: #fffbeb;
+      padding: 0.5rem;
+      border: 1px solid var(--warning);
+    }
+
+    /* Custom keyboard icon in footer */
+    .keyboard-icon {
+      display: inline-block;
+      width: 24px;
+      height: 16px;
+      background: var(--white);
+      border-radius: 2px;
+      position: relative;
+      margin-right: 0.5rem;
+    }
+
+    .keyboard-icon::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 12px;
+      top: 2px;
+      left: 2px;
+      background: var(--primary);
+      border-radius: 1px;
+      background-image: 
+        linear-gradient(var(--white) 1px, transparent 1px),
+        linear-gradient(90deg, var(--white) 1px, transparent 1px);
+      background-size: 3px 3px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <a href="#" class="logo">
+        <div class="logo-icon"></div>
+        <span>SetthiTyping</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#practice">Practice</a></li>
+          <li><a href="#leaderboard">Leaderboard</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Master Your Typing Skills</h1>
+      <p class="hero-subtitle">Professional typing practice for Khmer and English languages</p>
+    </div>
+  </section>
+
+  <!-- Main Application -->
+  <main class="main-container">
+    <div class="typing-card">
+      <!-- Mode Selector -->
+      <div class="mode-selector">
+        <button class="mode-btn active icon-practice" onclick="switchMode('practice')" id="practiceBtn">
+          Practice Mode
+        </button>
+        <button class="mode-btn icon-test" onclick="switchMode('test')" id="testBtn">
+          Speed Test
+        </button>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button class="control-btn active icon-en" onclick="switchLang('en')" id="enBtn">
+          English
+        </button>
+        <button class="control-btn icon-km" onclick="switchLang('km')" id="kmBtn">
+          Khmer
+        </button>
+        <div class="time-selector" id="timeSelector" style="display:none;">
+          <label>⏰ Time:</label>
+          <select id="timeSelect" onchange="setTestTime()">
+            <option value="30">30 seconds</option>
+            <option value="60" selected>1 minute</option>
+            <option value="120">2 minutes</option>
+            <option value="300">5 minutes</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Difficulty Badge -->
+      <div style="text-align: center;">
+        <div class="difficulty-badge" id="difficultyInfo"></div>
+      </div>
+
+      <!-- Timer -->
+      <div class="timer-display" id="timer" style="display:none;">60</div>
+
+      <!-- Target Text -->
+      <div class="target-text" id="target"></div>
+
+      <!-- Input Area -->
+      <textarea 
+        class="input-area" 
+        id="inputBox" 
+        placeholder="Start typing here to begin your practice..."
+        autocomplete="off" 
+        spellcheck="false"
+        oninput="checkTyping()"
+        onkeydown="handleKeyDown(event)"
+        onkeyup="handleKeyUp(event)"
+      ></textarea>
+
+      
+        <!-- Keyboard Status Display -->
+        <div class="keyboard-status">
+          <div>
+            <strong>Current Combination:</strong> 
+            <span class="key-combo-display" id="keyComboDisplay">None - Try Ctrl+A</span>
+          </div>
+          <div>
+            <strong>Active Modifiers:</strong> 
+            <span id="modifierStatus" style="color: var(--success-dark); font-weight: 600;">None</span>
+          </div>
+        </div>
+        
+        <div class="keyboard" id="virtualKeyboard">
+          <!-- Keyboard will be generated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="controls">
+        <button class="primary-btn" onclick="startTest()" id="startBtn">
+          🚀 Start Test
+        </button>
+        <button class="primary-btn secondary-btn" onclick="resetTyping()">
+          🔄 Reset
+        </button>
+        <button class="primary-btn secondary-btn" onclick="nextText()" id="nextBtn">
+          ⏭️ Next Text
+        </button>
+        <button class="primary-btn secondary-btn" onclick="showKeyboardGuide()">
+          📖 Show Guide
+        </button>
+      </div>
+<!-- Virtual Keyboard -->
+      <div class="keyboard-container">
+        <div class="keyboard-title">🎹 Real-Time Keyboard Guide & Display</div>
+        
+        <!-- Keyboard Guide Section -->
+        <div class="keyboard-guide">
+          <div class="guide-title">📚 Common Key Combinations Guide</div>
+          <div class="guide-combinations">
+            <div class="guide-combo">Ctrl + A (Select All)</div>
+            <div class="guide-combo">Ctrl + C (Copy)</div>
+            <div class="guide-combo">Ctrl + V (Paste)</div>
+            <div class="guide-combo">Ctrl + X (Cut)</div>
+            <div class="guide-combo">Ctrl + Z (Undo)</div>
+            <div class="guide-combo">Shift + Letter (Capital)</div>
+          </div>
+          <p style="color: var(--success-dark); font-size: 0.9rem; margin: 0;">
+            💡 <strong>Tip:</strong> Press and hold modifier keys (Ctrl, Alt, Shift) then press the letter. Watch the keyboard light up in <strong style="color: var(--success);">green</strong> for correct combinations!
+          </p>
+        </div>
+        
+      <!-- Statistics -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value" id="wpm">0</div>
+          <div class="stat-label">Words Per Minute</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="accuracy">100%</div>
+          <div class="stat-label">Accuracy</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="errors">0</div>
+          <div class="stat-label">Errors</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="progress">0%</div>
+          <div class="stat-label">Progress</div>
+        </div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="feedback" id="feedback"></div>
+
+      <!-- Results -->
+      <div class="results-card" id="results" style="display:none;"></div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <span class="keyboard-icon"></span>
+        SetthiTyping
+      </div>
+      <div class="footer-links">
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+        <a href="#support">Support</a>
+        <a href="#api">API</a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 SetthiTyping. Built with ❤️ in Cambodia. All rights reserved.</p>
+        <p>Empowering Cambodian developers to type faster and more accurately.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Text collections (same as before)
+    const textCollections = {
+      en: {
+        beginner: [
+          "The cat sits on the mat. Dogs run in the park. Birds fly in the sky.",
+          "I like to eat apples and bananas. The sun shines bright today.",
+          "We go to school every morning. Children play games together.",
+          "Books help us learn new things. Reading is fun and educational.",
+          "Water is essential for life. Plants need sunlight to grow.",
+          "Programming is a creative process that requires logical thinking.",
+          "SetthiTyping helps you improve your typing skills effectively."
+        ],
+        intermediate: [
+          "Technology has revolutionized the way we communicate and work in modern society.",
+          "Environmental conservation requires collective effort from individuals and governments worldwide.",
+          "The quick brown fox jumps over the lazy dog while the sun sets behind mountains.",
+          "Artificial intelligence and machine learning are transforming various industries rapidly.",
+          "Global economic systems are interconnected through international trade and digital currencies.",
+          "Scientific research continues to unveil mysteries about our universe and existence.",
+          "Cultural diversity enriches our understanding of human civilization and traditions.",
+          "SetthiTyping provides comprehensive typing practice for both Khmer and English languages."
+        ],
+        advanced: [
+          "Quantum computing represents a paradigm shift in computational capabilities, potentially revolutionizing cryptography, optimization problems, and scientific simulations through quantum mechanical phenomena like superposition and entanglement.",
+          "The interdisciplinary approach to neuroscience combines psychology, biology, chemistry, and physics to understand the complexities of brain function, consciousness, and the neural mechanisms underlying human behavior and cognition.",
+          "Contemporary philosophical discourse examines the intersection of technology and ethics, questioning the implications of artificial intelligence, biotechnology, and digital surveillance on human autonomy, privacy, and societal structures.",
+          "Climate change mitigation strategies require comprehensive policy frameworks that integrate renewable energy technologies, carbon pricing mechanisms, and international cooperation to achieve sustainable development goals.",
+          "SetthiTyping's advanced algorithms analyze your typing patterns and provide personalized recommendations to optimize your learning experience and maximize your typing potential."
+        ]
+      },
+      km: {
+        beginner: [
+          "ខ្ញុំរៀននៅសាលា។ ការរៀនគឺជាការសំខាន់។",
+          "ព្រះអាទិត្យរះនៅពេលព្រឹក។ ខ្យល់បកនៅពេលល្ងាច។",
+          "កុមារលេងនៅឧទ្យាន។ ពួកគេសប្បាយរីករាយ។",
+          "ម្ហូបខ្មែរមានរសជាតិឆ្ងាញ់។ ខ្ញុំចូលចិត្តបាយ។",
+          "ទឹកគឺជាអ្វីដែលសំខាន់សម្រាប់ជីវិត។",
+          "SetthiTyping ជួយអ្នកអភិវឌ្ឍជំនាញវាយអក្សរ។"
+        ],
+        intermediate: [
+          "បច្ចេកវិទ្យាបានផ្លាស់ប្តូរជីវិតប្រចាំថ្ងៃរបស់យើងយ៉ាងសំខាន់។",
+          "ការអប់រំគឺជាមូលដ្ឋានសម្រាប់ការអភិវឌ្ឍន៍ប្រទេសជាតិ។",
+          "វប្បធម៌ខ្មែរមានប្រវត្តិសាស្ត្រយូរលង់និងសម្បូរបែបធាតុ។",
+          "ការអភិរក្សបរិស្ថានគឺជាកាតព្វកិច្ចរបស់អ្នកគ្រប់រូប។",
+          "ភាសាខ្មែរមានអក្សរក្រម និងវេយ្យាករណ៍ស្មុគស្មាញ។",
+          "ប្រទេសកម្ពុជាមានធនធានធម្មជាតិច្រើនប្រភេទ។",
+          "SetthiTyping ផ្តល់នូវបទពិសោធន៍រៀនវាយអក្សរដ៏ល្អបំផុត។"
+        ],
+        advanced: [
+          "ការអភិវឌ្ឍន៍សេដ្ឋកិច្ចឌីជីថលត្រូវការការវិនិយោគលើហេដ្ឋារចនាសម្ព័ន្ធបច្ចេកវិទ្យាព័ត៌មាន និងការអប់រំជំនាញបច្ចេកទេសដើម្បីបង្កើនភាពសមត្ថភាពប្រកួតប្រជែងក្នុងទីផ្សារអន្តរជាតិ។",
+          "ការអភិរក្សប្រាសាទអង្គរវត្តនិងបេតិកភណ្ឌវប្បធម៌ជាតិត្រូវការការសហការគ្នារវាងរដ្ឋាភិបាល អង្គការអន្តរជាតិ និងសហគមន៍មូលដ្ឋានដើម្បីរក្សាទុកវារៈសម្រាប់កូនចៅនាអនាគត។",
+          "SetthiTyping ប្រើប្រាស់បច្ចេកវិទ្យាទំនើបដើម្បីវិភាគលំនាំការវាយអក្សររបស់អ្នក និងផ្តល់នូវការណែនាំបុគ្គលិកដើម្បីបង្កើនប្រសិទ្ធភាពនៃការរៀនសូត្រ។"
+        ]
+      }
+    };
+
+    // Keyboard layouts
+    const keyboardLayouts = {
+      en: {
+        row1: ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
+        row2: ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\'],
+        row3: ['Caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'Enter'],
+        row4: ['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'Shift'],
+        row5: ['Ctrl', 'Alt', ' ', 'Alt', 'Ctrl']
+      },
+      km: {
+        row1: ['«', '!', 'ៗ', '"', '៛', '%', '៍', '៌', '៉', '៊', '០', '៉', '៊', 'Backspace'],
+        row2: ['Tab', 'ឆ', 'ឹ', 'េ', 'រ', 'ត', 'យ', 'ុ', 'ិ', 'ោ', 'ផ', 'ៀ', 'ឧ', '\\'],
+        row3: ['Caps', 'ា', 'ស', 'ដ', 'ថ', 'ង', 'ហ', 'ជ', 'ក', 'ល', 'ើ', 'ៅ', 'Enter'],
+        row4: ['Shift', 'ខ', 'ច', 'វ', 'ប', 'ន', 'ម', 'ុំ', 'ុះ', '។', '៕', 'Shift'],
+        row5: ['Ctrl', 'Alt', ' ', 'Alt', 'Ctrl']
+      }
+    };
+
+    // Common keyboard shortcuts for guide
+    const keyboardShortcuts = [
+      { combo: ['Ctrl', 'A'], desc: 'Select All', keys: ['Control', 'a'] },
+      { combo: ['Ctrl', 'C'], desc: 'Copy', keys: ['Control', 'c'] },
+      { combo: ['Ctrl', 'V'], desc: 'Paste', keys: ['Control', 'v'] },
+      { combo: ['Ctrl', 'X'], desc: 'Cut', keys: ['Control', 'x'] },
+      { combo: ['Ctrl', 'Z'], desc: 'Undo', keys: ['Control', 'z'] },
+      { combo: ['Ctrl', 'Y'], desc: 'Redo', keys: ['Control', 'y'] },
+      { combo: ['Shift', 'A'], desc: 'Capital A', keys: ['Shift', 'a'] },
+      { combo: ['Alt', 'Tab'], desc: 'Switch Apps', keys: ['Alt', 'Tab'] }
+    ];
+
+    // Game state variables
+    let currentLang = "en";
+    let currentMode = "practice";
+    let currentDifficulty = "beginner";
+    let currentIdx = 0;
+    let testDuration = 60;
+    let isTestRunning = false;
+    let startTime = null;
+    let timer = null;
+    let remainingTime = 0;
+    let totalCharsTyped = 0;
+    let correctCharsTyped = 0;
+    let totalErrors = 0;
+    let currentTarget = "";
+    let currentPosition = 0;
+    let isCapsLockOn = false;
+    let keyStates = {};
+    let guideTimer = null;
+
+    // Modifier key tracking
+    let modifierKeys = {
+      ctrl: false,
+      alt: false,
+      shift: false,
+      meta: false
+    };
+
+    let currentKeyCombo = [];
+
+    // Show keyboard guide animation
+    function showKeyboardGuide() {
+      let currentGuideIndex = 0;
+      
+      // Clear any existing guide
+      if (guideTimer) {
+        clearInterval(guideTimer);
+      }
+      
+      // Clear all guide highlights
+      document.querySelectorAll('.key').forEach(key => {
+        key.classList.remove('guide-highlight');
+      });
+      
+      function highlightNextCombo() {
+        // Clear previous highlights
+        document.querySelectorAll('.key').forEach(key => {
+          key.classList.remove('guide-highlight');
+        });
+        
+        if (currentGuideIndex < keyboardShortcuts.length) {
+          const shortcut = keyboardShortcuts[currentGuideIndex];
+          
+          // Update display
+          document.getElementById('keyComboDisplay').textContent = 
+            `Guide: ${shortcut.combo.join(' + ')} (${shortcut.desc})`;
+          
+          // Highlight keys for this combination
+          shortcut.keys.forEach(keyName => {
+            let keyElement = null;
+            if (keyName === 'Control') {
+              keyElement = document.querySelector('[data-key="Control"]');
+            } else if (keyName === ' ') {
+              keyElement = document.querySelector('[data-key=" "]');
+            } else {
+              keyElement = document.querySelector(`[data-key="${keyName.toLowerCase()}"]`);
+            }
+            
+            if (keyElement) {
+              keyElement.classList.add('guide-highlight');
+              // Add guide indicator
+              if (!keyElement.querySelector('.key-guide-indicator')) {
+                const indicator = document.createElement('div');
+                indicator.className = 'key-guide-indicator';
+                indicator.textContent = '⭐';
+                keyElement.appendChild(indicator);
+              }
+            }
+          });
+          
+          currentGuideIndex++;
+        } else {
+          // Reset guide
+          currentGuideIndex = 0;
+          document.getElementById('keyComboDisplay').textContent = 'Guide Complete - Try the combinations!';
+          
+          // Clear guide highlights after 2 seconds
+          setTimeout(() => {
+            document.querySelectorAll('.key').forEach(key => {
+              key.classList.remove('guide-highlight');
+              const indicator = key.querySelector('.key-guide-indicator');
+              if (indicator) {
+                indicator.remove();
+              }
+            });
+            document.getElementById('keyComboDisplay').textContent = 'None - Try Ctrl+A';
+          }, 2000);
+          
+          clearInterval(guideTimer);
+        }
+      }
+      
+      // Start guide animation
+      highlightNextCombo();
+      guideTimer = setInterval(highlightNextCombo, 3000);
+    }
+
+    // Virtual keyboard functions
+    function createVirtualKeyboard(layout) {
+      const keyboard = document.getElementById('virtualKeyboard');
+      keyboard.innerHTML = '';
+      
+      const keyLayout = keyboardLayouts[layout];
+      
+      // Row 1 - Numbers
+      const row1 = document.createElement('div');
+      row1.className = 'keyboard-row';
+      keyLayout.row1.forEach(key => {
+        const keyElement = createKeyElement(key);
+        row1.appendChild(keyElement);
+      });
+      keyboard.appendChild(row1);
+      
+      // Row 2 - QWERTY
+      const row2 = document.createElement('div');
+      row2.className = 'keyboard-row';
+      keyLayout.row2.forEach(key => {
+        const keyElement = createKeyElement(key);
+        row2.appendChild(keyElement);
+      });
+      keyboard.appendChild(row2);
+      
+      // Row 3 - ASDF
+      const row3 = document.createElement('div');
+      row3.className = 'keyboard-row';
+      keyLayout.row3.forEach(key => {
+        const keyElement = createKeyElement(key);
+        row3.appendChild(keyElement);
+      });
+      keyboard.appendChild(row3);
+      
+      // Row 4 - ZXCV
+      const row4 = document.createElement('div');
+      row4.className = 'keyboard-row';
+      keyLayout.row4.forEach(key => {
+        const keyElement = createKeyElement(key);
+        row4.appendChild(keyElement);
+      });
+      keyboard.appendChild(row4);
+      
+      // Row 5 - Space bar
+      const row5 = document.createElement('div');
+      row5.className = 'keyboard-row';
+      keyLayout.row5.forEach(key => {
+        const keyElement = createKeyElement(key);
+        row5.appendChild(keyElement);
+      });
+      keyboard.appendChild(row5);
+    }
+
+    function createKeyElement(key) {
+      const keyElement = document.createElement('div');
+      keyElement.className = 'key';
+      
+      if (key === ' ') {
+        keyElement.className += ' space';
+        keyElement.textContent = 'Space';
+        keyElement.dataset.key = ' ';
+      } else if (key === 'Backspace') {
+        keyElement.className += ' backspace';
+        keyElement.textContent = '⌫';
+        keyElement.dataset.key = 'Backspace';
+      } else if (key === 'Enter') {
+        keyElement.className += ' enter';
+        keyElement.textContent = '↵';
+        keyElement.dataset.key = 'Enter';
+      } else if (key === 'Shift') {
+        keyElement.className += ' shift';
+        keyElement.textContent = '⇧';
+        keyElement.dataset.key = 'Shift';
+        keyElement.dataset.modifier = 'shift';
+      } else if (key === 'Caps') {
+        keyElement.className += ' caps-lock';
+        keyElement.innerHTML = 'Caps<div class="caps-indicator"></div>';
+        keyElement.dataset.key = 'CapsLock';
+      } else if (key === 'Tab') {
+        keyElement.className += ' tab';
+        keyElement.textContent = 'Tab';
+        keyElement.dataset.key = 'Tab';
+      } else if (key === 'Ctrl') {
+        keyElement.className += ' ctrl';
+        keyElement.textContent = 'Ctrl';
+        keyElement.dataset.key = 'Control';
+        keyElement.dataset.modifier = 'ctrl';
+      } else if (key === 'Alt') {
+        keyElement.className += ' alt';
+        keyElement.textContent = 'Alt';
+        keyElement.dataset.key = 'Alt';
+        keyElement.dataset.modifier = 'alt';
+      } else {
+        keyElement.textContent = key;
+        keyElement.dataset.key = key.toLowerCase();
+      }
+      
+      return keyElement;
+    }
+
+    function updateKeyComboDisplay() {
+      const comboDisplay = document.getElementById('keyComboDisplay');
+      const modifierStatus = document.getElementById('modifierStatus');
+      
+      // Update key combination display
+      if (currentKeyCombo.length > 0) {
+        comboDisplay.textContent = currentKeyCombo.join(' + ');
+        comboDisplay.style.backgroundColor = 'var(--success-light)';
+        comboDisplay.style.color = 'var(--success-dark)';
+        comboDisplay.style.borderColor = 'var(--success)';
+      } else {
+        comboDisplay.textContent = 'None - Try Ctrl+A';
+        comboDisplay.style.backgroundColor = 'var(--light-gray)';
+        comboDisplay.style.color = 'var(--success-dark)';
+        comboDisplay.style.borderColor = 'var(--success)';
+      }
+      
+      // Update modifier status
+      const activeModifiers = [];
+      if (modifierKeys.ctrl) activeModifiers.push('Ctrl');
+      if (modifierKeys.alt) activeModifiers.push('Alt');
+      if (modifierKeys.shift) activeModifiers.push('Shift');
+      if (modifierKeys.meta) activeModifiers.push('Meta');
+      if (isCapsLockOn) activeModifiers.push('Caps Lock');
+      
+      if (activeModifiers.length > 0) {
+        modifierStatus.textContent = activeModifiers.join(', ');
+        modifierStatus.style.color = 'var(--success)';
+      } else {
+        modifierStatus.textContent = 'None';
+        modifierStatus.style.color = 'var(--success-dark)';
+      }
+    }
+
+    function highlightNextKey() {
+      // Clear all highlights
+      document.querySelectorAll('.key').forEach(key => {
+        key.classList.remove('next-key');
+      });
+      
+      if (currentPosition < currentTarget.length) {
+        const nextChar = currentTarget[currentPosition];
+        const targetKey = nextChar.toLowerCase();
+        
+        // Find and highlight the next key
+        const keyElement = document.querySelector(`[data-key="${targetKey}"]`);
+        if (keyElement) {
+          keyElement.classList.add('next-key');
+        }
+        
+        // Handle space key specifically
+        if (nextChar === ' ') {
+          const spaceKey = document.querySelector('[data-key=" "]');
+          if (spaceKey) {
+            spaceKey.classList.add('next-key');
+          }
+        }
+      }
+    }
+
+    function handleKeyDown(event) {
+      const key = event.key;
+      const code = event.code;
+      
+      // Track modifier keys
+      if (key === 'Control') {
+        modifierKeys.ctrl = true;
+      } else if (key === 'Alt') {
+        modifierKeys.alt = true;
+      } else if (key === 'Shift') {
+        modifierKeys.shift = true;
+      } else if (key === 'Meta') {
+        modifierKeys.meta = true;
+      }
+      
+      // Handle Caps Lock
+      if (key === 'CapsLock') {
+        isCapsLockOn = !isCapsLockOn;
+        const capsKey = document.querySelector('[data-key="CapsLock"]');
+        if (capsKey) {
+          capsKey.classList.toggle('caps-active', isCapsLockOn);
+        }
+      }
+      
+      // Build current key combination
+      currentKeyCombo = [];
+      if (modifierKeys.ctrl) currentKeyCombo.push('Ctrl');
+      if (modifierKeys.alt) currentKeyCombo.push('Alt');
+      if (modifierKeys.shift) currentKeyCombo.push('Shift');
+      if (modifierKeys.meta) currentKeyCombo.push('Meta');
+      
+      // Add the main key if it's not a modifier
+      if (!['Control', 'Alt', 'Shift', 'Meta', 'CapsLock'].includes(key)) {
+        if (key === ' ') {
+          currentKeyCombo.push('Space');
+        } else if (key.length === 1) {
+          currentKeyCombo.push(key.toUpperCase());
+        } else {
+          currentKeyCombo.push(key);
+        }
+      }
+      
+      // Update display
+      updateKeyComboDisplay();
+      
+      // Highlight modifier keys with green color
+      document.querySelectorAll('.key[data-modifier]').forEach(modKey => {
+        const modifier = modKey.dataset.modifier;
+        if (modifierKeys[modifier]) {
+          modKey.classList.add('modifier-active');
+        } else {
+          modKey.classList.remove('modifier-active');
+        }
+      });
+      
+      // Find corresponding key element for visual feedback
+      let keyElement = null;
+      if (key === ' ') {
+        keyElement = document.querySelector('[data-key=" "]');
+      } else if (key.length === 1) {
+        keyElement = document.querySelector(`[data-key="${key.toLowerCase()}"]`);
+      } else {
+        keyElement = document.querySelector(`[data-key="${key}"]`);
+      }
+      
+      if (keyElement) {
+        keyElement.classList.add('pressed');
+        
+        // Add combo effect with green color if multiple keys are pressed
+        if (currentKeyCombo.length > 1) {
+          keyElement.classList.add('combo-active');
+        }
+        
+        keyStates[key.toLowerCase()] = true;
+        
+        // Check if it's the correct key for typing practice
+        if (currentPosition < currentTarget.length && !modifierKeys.ctrl && !modifierKeys.alt) {
+          const expectedChar = currentTarget[currentPosition];
+          const isCorrect = (key === expectedChar) || 
+                           (key.toLowerCase() === expectedChar.toLowerCase());
+          
+          if (isCorrect) {
+            keyElement.classList.add('correct');
+            setTimeout(() => keyElement.classList.remove('correct'), 500);
+          } else if (key.length === 1 || key === ' ') { // Only show wrong for typing keys
+            keyElement.classList.add('wrong');
+            setTimeout(() => keyElement.classList.remove('wrong'), 500);
+          }
+        }
+      }
+      
+      // Handle common keyboard shortcuts (prevent default behavior during typing practice)
+      if (modifierKeys.ctrl || modifierKeys.alt) {
+        if (currentKeyCombo.length > 1) {
+          // Show the combination but don't prevent all shortcuts
+          const comboString = currentKeyCombo.join('+');
+          
+          // Only prevent certain shortcuts during typing practice
+          const preventedCombos = ['Ctrl+A', 'Ctrl+C', 'Ctrl+V', 'Ctrl+X', 'Ctrl+Z'];
+          if (preventedCombos.includes(comboString) && (isTestRunning || currentMode === 'practice')) {
+            event.preventDefault();
+            document.getElementById("feedback").innerHTML = `<span class="success">✅ ${comboString} combination detected! (Disabled during practice)</span>`;
+          }
+        }
+      }
+    }
+
+    function handleKeyUp(event) {
+      const key = event.key;
+      
+      // Reset modifier keys
+      if (key === 'Control') {
+        modifierKeys.ctrl = false;
+      } else if (key === 'Alt') {
+        modifierKeys.alt = false;
+      } else if (key === 'Shift') {
+        modifierKeys.shift = false;
+      } else if (key === 'Meta') {
+        modifierKeys.meta = false;
+      }
+      
+      // Update display
+      updateKeyComboDisplay();
+      
+      // Remove modifier highlighting
+      document.querySelectorAll('.key[data-modifier]').forEach(modKey => {
+        const modifier = modKey.dataset.modifier;
+        if (!modifierKeys[modifier]) {
+          modKey.classList.remove('modifier-active');
+        }
+      });
+      
+      // Find corresponding key element
+      let keyElement = null;
+      if (key === ' ') {
+        keyElement = document.querySelector('[data-key=" "]');
+      } else if (key.length === 1) {
+        keyElement = document.querySelector(`[data-key="${key.toLowerCase()}"]`);
+      } else {
+        keyElement = document.querySelector(`[data-key="${key}"]`);
+      }
+      
+      if (keyElement) {
+        keyElement.classList.remove('pressed', 'combo-active');
+        keyStates[key.toLowerCase()] = false;
+      }
+      
+      // Clear combo if no modifiers are pressed
+      if (!modifierKeys.ctrl && !modifierKeys.alt && !modifierKeys.shift && !modifierKeys.meta) {
+        currentKeyCombo = [];
+        updateKeyComboDisplay();
+      }
+    }
+
+    // Rest of the functions remain the same but with green color scheme
+    function switchMode(mode) {
+      currentMode = mode;
+      document.getElementById('practiceBtn').classList.toggle('active', mode === 'practice');
+      document.getElementById('testBtn').classList.toggle('active', mode === 'test');
+      document.getElementById('timeSelector').style.display = mode === 'test' ? 'flex' : 'none';
+      document.getElementById('timer').style.display = mode === 'test' ? 'block' : 'none';
+      document.getElementById('nextBtn').style.display = mode === 'practice' ? 'inline-flex' : 'none';
+      resetTyping();
+    }
+
+    function switchLang(lang) {
+      currentLang = lang;
+      currentIdx = 0;
+      document.getElementById("enBtn").classList.toggle('active', lang === "en");
+      document.getElementById("kmBtn").classList.toggle('active', lang === "km");
+      createVirtualKeyboard(lang);
+      resetTyping();
+    }
+
+    function setTestTime() {
+      testDuration = parseInt(document.getElementById('timeSelect').value);
+      if (currentMode === 'test' && !isTestRunning) {
+        document.getElementById('timer').textContent = testDuration;
+      }
+    }
+
+    function updateDifficulty() {
+      const accuracy = totalCharsTyped > 0 ? (correctCharsTyped / totalCharsTyped) * 100 : 100;
+      const wpm = calculateWPM();
+      
+      if (currentMode === 'practice') {
+        if (accuracy >= 95 && wpm >= 40) {
+          currentDifficulty = "advanced";
+        } else if (accuracy >= 85 && wpm >= 25) {
+          currentDifficulty = "intermediate";
+        } else {
+          currentDifficulty = "beginner";
+        }
+      }
+      
+      const difficultyLabels = {
+        beginner: "🟢 Beginner Level - Focus on accuracy",
+        intermediate: "🟡 Intermediate Level - Building speed", 
+        advanced: "🔴 Advanced Level - Professional typing"
+      };
+      
+      document.getElementById('difficultyInfo').textContent = difficultyLabels[currentDifficulty];
+    }
+
+    function getRandomText() {
+      const texts = textCollections[currentLang][currentDifficulty];
+      if (currentMode === 'test') {
+        const combined = [];
+        while (combined.join(' ').length < 300) {
+          combined.push(texts[Math.floor(Math.random() * texts.length)]);
+        }
+        return combined.join(' ');
+      }
+      return texts[Math.floor(Math.random() * texts.length)];
+    }
+
+    function nextText() {
+      if (currentMode === 'practice') {
+        resetTyping();
+      }
+    }
+
+    function startTest() {
+      if (currentMode === 'test' && !isTestRunning) {
+        isTestRunning = true;
+        remainingTime = testDuration;
+        document.getElementById('startBtn').innerHTML = '<div class="loading"></div> Testing...';
+        document.getElementById('startBtn').onclick = stopTest;
+        document.getElementById('inputBox').disabled = false;
+        document.getElementById('inputBox').focus();
+        startTimer();
+      }
+    }
+
+    function stopTest() {
+      isTestRunning = false;
+      clearInterval(timer);
+      document.getElementById('inputBox').disabled = true;
+      document.getElementById('startBtn').innerHTML = '🚀 Start Test';
+      document.getElementById('startBtn').onclick = startTest;
+      showResults();
+    }
+
+    function startTimer() {
+      timer = setInterval(() => {
+        remainingTime--;
+        const timerElement = document.getElementById('timer');
+        timerElement.textContent = remainingTime;
+        
+        if (remainingTime <= 10) {
+          timerElement.className = 'timer-display danger';
+        } else if (remainingTime <= 30) {
+          timerElement.className = 'timer-display warning';
+        }
+        
+        if (remainingTime <= 0) {
+          stopTest();
+        }
+      }, 1000);
+    }
+
+    function resetTyping() {
+      clearInterval(timer);
+      clearInterval(guideTimer);
+      isTestRunning = false;
+      startTime = null;
+      totalCharsTyped = 0;
+      correctCharsTyped = 0;
+      totalErrors = 0;
+      currentPosition = 0;
+      
+      // Reset key states
+      modifierKeys = { ctrl: false, alt: false, shift: false, meta: false };
+      currentKeyCombo = [];
+      updateKeyComboDisplay();
+      
+      currentTarget = getRandomText();
+      document.getElementById("target").innerHTML = highlightText("", currentTarget);
+      document.getElementById("inputBox").value = "";
+      document.getElementById("inputBox").disabled = false;
+      document.getElementById("inputBox").focus();
+      
+      document.getElementById("wpm").textContent = "0";
+      document.getElementById("accuracy").textContent = "100%";
+      document.getElementById("errors").textContent = "0";
+      document.getElementById("progress").textContent = "0%";
+      document.getElementById("feedback").textContent = "";
+      document.getElementById("results").style.display = "none";
+      
+      if (currentMode === 'test') {
+        remainingTime = testDuration;
+        document.getElementById('timer').textContent = testDuration;
+        document.getElementById('timer').className = 'timer-display';
+        document.getElementById('startBtn').innerHTML = '🚀 Start Test';
+        document.getElementById('startBtn').onclick = startTest;
+        document.getElementById('inputBox').disabled = true;
+      }
+      
+      // Reset keyboard highlighting
+      document.querySelectorAll('.key').forEach(key => {
+        key.classList.remove('correct', 'wrong', 'next-key', 'pressed', 'modifier-active', 'combo-active', 'guide-highlight');
+        const indicator = key.querySelector('.key-guide-indicator');
+        if (indicator) {
+          indicator.remove();
+        }
+      });
+      
+      highlightNextKey();
+      updateDifficulty();
+    }
+
+    function highlightText(typed, target) {
+      let result = "";
+      
+      for (let i = 0; i < target.length; i++) {
+        if (i < typed.length) {
+          if (typed[i] === target[i]) {
+            result += `<span class="correct-char">${target[i]}</span>`;
+          } else {
+            result += `<span class="wrong-char">${target[i]}</span>`;
+          }
+        } else if (i === typed.length) {
+          result += `<span class="current-char">${target[i]}</span>`;
+        } else {
+          result += target[i];
+        }
+      }
+      
+      return result;
+    }
+
+    function calculateWPM() {
+      if (!startTime) return 0;
+      const timeElapsed = (Date.now() - startTime) / 1000 / 60;
+      const wordsTyped = correctCharsTyped / 5;
+      return Math.round(wordsTyped / timeElapsed) || 0;
+    }
+
+    function checkTyping() {
+      const input = document.getElementById("inputBox").value;
+      
+      if (!startTime && input.length > 0) {
+        startTime = Date.now();
+      }
+      
+      if (currentMode === 'test' && !isTestRunning && input.length > 0) {
+        startTest();
+      }
+      
+      currentPosition = input.length;
+      totalCharsTyped = input.length;
+      correctCharsTyped = 0;
+      let currentErrors = 0;
+      
+      for (let i = 0; i < input.length && i < currentTarget.length; i++) {
+        if (input[i] === currentTarget[i]) {
+          correctCharsTyped++;
+        } else {
+          currentErrors++;
+        }
+      }
+      
+      if (input.length > currentTarget.length) {
+        currentErrors += input.length - currentTarget.length;
+      }
+      
+      totalErrors = Math.max(totalErrors, currentErrors);
+      
+      document.getElementById("target").innerHTML = highlightText(input, currentTarget);
+      
+      const accuracy = totalCharsTyped > 0 ? Math.round((correctCharsTyped / totalCharsTyped) * 100) : 100;
+      const wpm = calculateWPM();
+      const progress = Math.min(100, Math.round((input.length / currentTarget.length) * 100));
+      
+      document.getElementById("wpm").textContent = wpm;
+      document.getElementById("accuracy").textContent = accuracy + "%";
+      document.getElementById("errors").textContent = totalErrors;
+      document.getElementById("progress").textContent = progress + "%";
+      
+      let feedback = "";
+      if (currentErrors > 0) {
+        feedback = `<span class="error">❌ ${currentErrors} error(s) detected</span>`;
+      } else if (input.length > 0) {
+        feedback = `<span class="success">✅ Perfect typing!</span>`;
+      }
+      
+      if (wpm > 0) {
+        if (wpm >= 60) feedback += ` <span class="success">🚀 Lightning fast!</span>`;
+        else if (wpm >= 40) feedback += ` <span class="success">⚡ Excellent speed!</span>`;
+        else if (wpm >= 20) feedback += ` <span class="warning">📈 Keep improving!</span>`;
+      }
+      
+      document.getElementById("feedback").innerHTML = feedback;
+      
+      // Update keyboard highlighting
+      highlightNextKey();
+      
+      if (currentMode === 'practice' && input === currentTarget) {
+        document.getElementById("inputBox").disabled = true;
+        showResults();
+      }
+      
+      updateDifficulty();
+    }
+
+    function showResults() {
+      const wpm = calculateWPM();
+      const accuracy = totalCharsTyped > 0 ? Math.round((correctCharsTyped / totalCharsTyped) * 100) : 100;
+      const timeSpent = startTime ? Math.round((Date.now() - startTime) / 1000) : 0;
+      
+      let performance = "";
+      if (wpm >= 60 && accuracy >= 95) performance = "🏆 OUTSTANDING!";
+      else if (wpm >= 40 && accuracy >= 90) performance = "🥇 EXCELLENT!";
+      else if (wmp >= 25 && accuracy >= 85) performance = "🥈 GREAT JOB!";
+      else if (wpm >= 15 && accuracy >= 80) performance = "🥉 GOOD EFFORT!";
+      else performance = "📚 KEEP PRACTICING!";
+      
+      document.getElementById("results").innerHTML = `
+        <h3 class="results-title">${performance}</h3>
+        <div class="results-stats">
+          <div class="result-stat">
+            <strong>Words Per Minute</strong><br>${wpm} WPM
+          </div>
+          <div class="result-stat">
+            <strong>Accuracy</strong><br>${accuracy}%
+          </div>
+          <div class="result-stat">
+            <strong>Total Errors</strong><br>${totalErrors}
+          </div>
+          <div class="result-stat">
+            <strong>Time Spent</strong><br>${timeSpent}s
+          </div>
+        </div>
+        <div style="margin-top: 1.5rem;">
+          <button class="primary-btn" onclick="resetTyping()">🔄 Try Again</button>
+          <button class="primary-btn secondary-btn" onclick="nextText()" style="margin-left: 1rem;">⏭️ Next Challenge</button>
+        </div>
+      `;
+      document.getElementById("results").style.display = "block";
+    }
+
+    // Initialize application
+    window.onload = () => {
+      switchLang("en");
+      switchMode("practice");
+      createVirtualKeyboard("en");
+      resetTyping();
+      updateKeyComboDisplay();
+      
+      // Auto-start the guide after 3 seconds
+      setTimeout(() => {
+        showKeyboardGuide();
+      }, 3000);
+    };
+
+    // Anti-cheat measures
+    document.getElementById("inputBox").addEventListener("paste", (e) => {
+      e.preventDefault();
+      document.getElementById("feedback").innerHTML = `<span class="error">❌ Paste disabled for fair practice!</span>`;
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener("keydown", (e) => {
+      if (e.ctrlKey && e.key === "r" && !isTestRunning) {
+        e.preventDefault();
+        resetTyping();
+      }
+      if (e.key === "Escape") {
+        if (isTestRunning) stopTest();
+      }
+    });
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
